@@ -2,7 +2,7 @@
 
 - Reading CAN messages with different PGNs such as vehicle speed, fuel level, engine_speed etc. in the J1939 standard
 - Microcontroller: NXP LPC11C24F
-- CAN BAUD RATE: 500 kbit/s
+- CAN BAUD RATE: 250/500 Kbps
 - PCAN-View program
 
 https://youtu.be/DuKHaN98Y4s
