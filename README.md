@@ -12,5 +12,7 @@ All J1939 packets, except for the request packet, contain eight bytes of data an
 - Microcontroller: NXP series...
 - CAN BAUD RATE: 250/500 Kbps
 
+Design by https://www.linkedin.com/in/musacufalci/
+
 
 
