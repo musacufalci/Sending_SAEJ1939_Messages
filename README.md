@@ -1,4 +1,4 @@
-# Sending_SAEJ1939_CANBUS_Messages
+# Sending SAEJ1939 CANBUS Messages
 
 The work of the project:  https://youtu.be/DuKHaN98Y4s
 
