@@ -4,7 +4,6 @@
 - Sending and Reading CAN messages with different PGNs such as vehicle speed, fuel level, engine_speed etc. in the J1939 standard...
 
 - The work of the project and software simulation: https://youtu.be/DuKHaN98Y4s
-- 
 - Design by: https://www.linkedin.com/in/musacufalci/
 
 
