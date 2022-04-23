@@ -9,13 +9,14 @@ Receive Interrupt Priority  – High
 Transmit Interrupt Priority – High
 */
 
-#include <p18cxxx.h>
 #include "j1939.h"
 #define NODE1ADDRESS 128
 #define NODE2ADDRESS 129
 #define J1939_PGN0_REQ_ENGINE_SPEED 0x04
 #define J1939_PGN1_REQ_ENGINE_SPEED 0xf0
 #define J1939_PGN2_REQ_ENGINE_SPEED 0x00
+
+
 //********************************************************************
 void InterruptHandlerHigh (void);
 //--------------------------------------------------------------------
@@ -27,8 +28,10 @@ _asm
 goto InterruptHandlerHigh
 _endasm
 }
+
 //--------------------------------------------------------------------
 // High priority interrupt routine
+
 #pragma code
 #pragma interrupt InterruptHandlerHigh
 void InterruptHandlerHigh( void )
@@ -36,6 +39,8 @@ void InterruptHandlerHigh( void )
 if (PIR3 != 0x00)
 J1939_ISR();
 }
+
+
 //********************************************************************
 J1939_MESSAGE Msg;
 //********************************************************************
