@@ -58,6 +58,7 @@ LATD = 0;
 LATCbits.LATC2 = 0;
 J1939_Initialization( TRUE );
 INTCONbits.GIEH = 1;
+  
 // Wait for address contention to time out
 while (J1939_Flags.WaitingForAddressClaimContention)
 J1939_Poll(5);
