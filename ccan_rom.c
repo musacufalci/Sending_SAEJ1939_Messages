@@ -11,6 +11,7 @@
 	*****************************************************************************************
 */
 
+
 /*-----------------------------------------------------------------------------
 Filename: cr_startup_lpc11xx.c
 Description: This file sets up and arranges the startup.
@@ -37,7 +38,7 @@ const uint32_t OscRateIn = 12000000;
 #define TEST_CCAN_BAUD_RATE 500000
 
 #define operation_vehicle_speed_delay		1529    //((255*2)*3-1)-----3 times loop
-#define operation_fuel_level_delay			767		//((255)*3-1)-----3 times loop
+#define operation_fuel_level_delay		767	//((255)*3-1)-----3 times loop
 #define operation_engine_speed_delay 		1529	//((255*2)*3-1)-----3 times loop
 
 
@@ -74,6 +75,8 @@ void engine_speed_init(void);
 void vehicle_speed_function(void);
 void fuel_level_function(void);
 void engine_speed_function(void);
+
+
 
 void delay32Ms(uint8_t timer_num, uint32_t delayInMs)
 {
@@ -140,6 +143,7 @@ void baudrateCalculate(uint32_t baud_rate, uint32_t *can_api_timing_cfg)
 }
 
 
+
 /*	CAN receive callback */
 /*	Function is executed by the Callback handler after
     a CAN message has been received */
@@ -156,6 +160,7 @@ void CAN_rx(uint8_t msg_obj_num) {
 	}
 }
 
+
 /*	CAN transmit callback */
 /*	Function is executed by the Callback handler after
     a CAN message has been transmitted */
@@ -167,9 +172,12 @@ void CAN_tx(uint8_t msg_obj_num) {}
 void CAN_error(uint32_t error_info) {}
 
 
+
 void CAN_IRQHandler(void) {
 	LPC_CCAN_API->isr();
 }
+
+
 
 int main(void)
 {
@@ -195,12 +203,18 @@ int main(void)
 	LPC_CCAN_API->config_calb(&callbacks);
 	/* Enable the CAN Interrupt */
 	NVIC_EnableIRQ(CAN_IRQn);
+	
+	
 //*****************************************************************************
 //	delay32Ms(0,500);
 
 	vehicle_speed_init();
 	fuel_level_init();
 	engine_speed_init();
+	
+	
+	
+	
 //*****************************************************************************
 	while (1) {
 
@@ -215,6 +229,9 @@ int main(void)
 	}
 }
 
+
+
+
 //*****************************************************************************
 //*****************************************************************************
 void vehicle_speed_init(void)
@@ -224,6 +241,9 @@ void vehicle_speed_init(void)
 //		2-3 2 bytes Wheel-Based Vehicle Speed
 //		vehicle_speed_init
 //---------------------------------------------------------------------------
+	
+	
+	
 	/* Send a simple one time CAN message */
 	msg_obj.msgobj  = 1;
 	msg_obj.mode_id = 0x18FEF1FE | CAN_MSGOBJ_EXT;
@@ -244,8 +264,15 @@ void vehicle_speed_init(void)
 //	msg_obj.mask = 0x700;
 //	LPC_CCAN_API->config_rxmsgobj(&msg_obj);
 }
+
+
+
+
 //*****************************************************************************
 //*****************************************************************************
+
+
+
 void fuel_level_init(void)
 {
 //---------------------------------------------------------------------------
@@ -273,6 +300,10 @@ void fuel_level_init(void)
 //	msg_obj.mask = 0x700;
 //	LPC_CCAN_API->config_rxmsgobj(&msg_obj);
 }
+
+
+
+
 //*****************************************************************************
 //*****************************************************************************
 void engine_speed_init(void)
@@ -302,6 +333,10 @@ void engine_speed_init(void)
 //	msg_obj.mask = 0x700;
 //	LPC_CCAN_API->config_rxmsgobj(&msg_obj);
 }
+
+
+
+
 //*****************************************************************************
 //*****************************************************************************
 void vehicle_speed_function(void)
@@ -358,6 +393,11 @@ void vehicle_speed_function(void)
 }
 //*****************************************************************************
 //*****************************************************************************
+
+
+
+
+
 void fuel_level_function(void)
 {
 //---------------------------------------------------------------------------
@@ -405,6 +445,11 @@ void fuel_level_function(void)
 }
 //*****************************************************************************
 //*****************************************************************************
+
+
+
+
+
 void engine_speed_function(void)
 {
 //---------------------------------------------------------------------------
